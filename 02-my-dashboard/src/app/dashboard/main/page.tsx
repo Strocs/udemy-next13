@@ -1,7 +1,15 @@
+import { Title, WidgetsGrid } from '@/components'
+
+export const metadata = {
+  title: 'Dashboard',
+  description: 'Dashboard Content'
+}
+
 export default function MainPage () {
   return (
-    <div>
-      <h1>Hello Page</h1>
-    </div>
+    <main className='text-black'>
+      <Title title='Dashboard' pre='General Info' />
+      <WidgetsGrid />
+    </main>
   )
 }
