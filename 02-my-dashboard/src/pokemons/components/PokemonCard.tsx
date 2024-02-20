@@ -1,13 +1,25 @@
+'use client'
 import Link from 'next/link'
-import { SimplePokemon } from '..'
 import Image from 'next/image'
-import { IoHeartOutline } from 'react-icons/io5'
+import type { SimplePokemon } from '..'
+import { useAppDispatch, useAppSelector } from '@/store'
+import { IoHeart, IoHeartOutline } from 'react-icons/io5'
+import { toggleFavorite } from '@/store/pokemons/pokemonsSlice'
 
 interface Props {
   pokemon: SimplePokemon
 }
 
 export const PokemonCard = ({ pokemon }: Props) => {
+  const isFavorite = useAppSelector(
+    state => !!state.pokemonsSlice.favorites[pokemon.id]
+  )
+  const dispatch = useAppDispatch()
+
+  const onToggle = () => {
+    dispatch(toggleFavorite(pokemon))
+  }
+
   return (
     <div className='mx-auto right-0 mt-2 w-60'>
       <div className='bg-white rounded-xl overflow-hidden shadow-lg'>
@@ -34,20 +46,28 @@ export const PokemonCard = ({ pokemon }: Props) => {
           </div>
         </div>
         <div className='border-b'>
-          <Link
-            className='px-4 py-2 hover:bg-gray-100 flex items-center'
-            href='/dashboard/pokemons'
+          <button
+            className='px-4 py-2 hover:bg-gray-100 flex items-center w-full'
+            onClick={onToggle}
           >
             <div className='text-red-600'>
-              <IoHeartOutline size={20} />
+              {isFavorite ? (
+                <IoHeart size={20} />
+              ) : (
+                <IoHeartOutline size={20} />
+              )}
             </div>
-            <div className='pl-3'>
+            <div className='pl-3 text-start'>
               <p className='text-sm font-medium text-gray-800 leading-none'>
-                Add to Favorite
+                {isFavorite ? 'Favorite' : 'Add to favorites'}
               </p>
-              <p className='text-xs text-gray-500'>Do you like this pokemon?</p>
+              <p className='text-xs text-gray-500'>
+                {isFavorite
+                  ? 'You like this pokemon!'
+                  : 'Do you like this pokemon?'}
+              </p>
             </div>
-          </Link>
+          </button>
         </div>
       </div>
     </div>
