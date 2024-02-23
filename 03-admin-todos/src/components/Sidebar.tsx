@@ -38,6 +38,7 @@ export const Sidebar = () => {
               src='https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg'
               className='w-32'
               alt='tailus logo'
+              priority
             />
           </Link>
         </div>

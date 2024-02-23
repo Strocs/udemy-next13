@@ -1,28 +1,30 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { IoTrashOutline } from 'react-icons/io5'
-import * as todosApi from '../helpers/todos'
+// import { useRouter } from 'next/navigation'
+// import * as todosApi from '../helpers/todos'
+import { addTodo, deleteTodos } from '../actions/todo-actions'
 
 export const NewTodo = () => {
   const [description, setDescription] = useState('')
 
-  const router = useRouter()
+  // const router = useRouter()
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (description.trim() === '') return
-    await todosApi.createTodo(description)
+    // await todosApi.createTodo(description)
+    await addTodo(description)
     setDescription('')
-    router.refresh()
+    // router.refresh()
   }
 
-  const onDeleteTodos = async () => {
-    const { count } = await todosApi.deleteCompleted()
-    if (count === 0) return
-    router.refresh()
-  }
+  // const onDeleteTodos = async () => {
+  // const { count } = await todosApi.deleteCompleted()
+  // if (count === 0) return
+  // router.refresh()
+  // }
 
   return (
     <form onSubmit={onSubmit} className='flex w-full pb-6'>
@@ -44,7 +46,7 @@ export const NewTodo = () => {
       <span className='flex flex-1'></span>
 
       <button
-        onClick={onDeleteTodos}
+        onClick={() => deleteTodos()}
         type='button'
         className='flex items-center justify-center rounded ml-2 bg-red-400 px-4 py-2 text-white hover:bg-red-700 transition-all'
       >
