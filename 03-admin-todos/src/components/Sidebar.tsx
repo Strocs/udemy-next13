@@ -7,7 +7,7 @@ import {
   IoCheckboxOutline,
   IoListOutline
 } from 'react-icons/io5'
-import { FaCookie } from 'react-icons/fa6'
+import { FaCookie, FaProductHunt, FaShirt } from 'react-icons/fa6'
 import { FaShoppingCart } from 'react-icons/fa'
 
 const sidebarItems = [
@@ -33,7 +33,7 @@ const sidebarItems = [
   },
   {
     name: 'Products',
-    icon: <FaShoppingCart size={30} />,
+    icon: <FaShirt size={30} />,
     path: '/dashboard/products'
   }
 ]
