@@ -12,7 +12,9 @@ export default function ProfilePage() {
           <p>
             {status === "loading"
               ? "Loading User Info..."
-              : JSON.stringify(session)}
+              : status === "unauthenticated"
+                ? "Unauthenticated"
+                : JSON.stringify(session)}
           </p>
         </div>
       </WidgetItem>
