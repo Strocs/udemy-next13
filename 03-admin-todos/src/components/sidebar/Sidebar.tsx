@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CiLogout } from "react-icons/ci";
-import { SidebarItem } from ".";
+import {
+  SidebarItem,
+  SidebarLogoutButton,
+  SignInButton,
+  SignOutButton,
+} from "..";
 import {
   IoCalendarOutline,
   IoCheckboxOutline,
   IoListOutline,
 } from "react-icons/io5";
-import { FaCookie, FaShirt } from "react-icons/fa6";
+import { FaCookie, FaShirt, FaUser } from "react-icons/fa6";
 import { auth } from "@/lib/auth";
 
 const sidebarItems = [
@@ -15,6 +19,11 @@ const sidebarItems = [
     name: "Dashboard",
     icon: <IoCalendarOutline size={30} />,
     path: "/dashboard",
+  },
+  {
+    name: "Profile",
+    icon: <FaUser size={30} />,
+    path: "/dashboard/profile",
   },
   {
     name: "Rest Todos",
@@ -81,12 +90,7 @@ export const Sidebar = async () => {
         </ul>
       </div>
 
-      <div className="px-6 -mx-6 pt-4 flex justify-between items-center border-t">
-        <button className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-          <CiLogout />
-          <span className="group-hover:text-gray-700">Logout</span>
-        </button>
-      </div>
+      {session ? <SignOutButton /> : <SignInButton />}
     </aside>
   );
 };
