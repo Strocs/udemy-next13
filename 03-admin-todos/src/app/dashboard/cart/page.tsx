@@ -6,14 +6,14 @@ import { WidgetItem } from '@/components'
 
 export const metadata = {
   title: 'Cart Page',
-  description: 'Cart Page'
+  description: 'Cart Page',
 }
 
 const getProductsInCart = (cart: Cart): ProductInCart[] => {
   const productsInCart: ProductInCart[] = []
 
   for (const id of Object.keys(cart)) {
-    const product = products.find(prod => prod.id === id)
+    const product = products.find((prod) => prod.id === id)
     if (product) {
       productsInCart.push({ product, quantity: cart[id] })
     }
@@ -22,7 +22,7 @@ const getProductsInCart = (cart: Cart): ProductInCart[] => {
   return productsInCart
 }
 
-export default function CartPage () {
+export default function CartPage() {
   const cookieStore = cookies()
   const cart: Cart = JSON.parse(cookieStore.get('cart')?.value || '{}')
   const productsInCart = getProductsInCart(cart)

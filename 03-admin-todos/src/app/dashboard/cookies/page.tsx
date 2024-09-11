@@ -3,10 +3,10 @@ import { cookies } from 'next/headers'
 
 export const metadata = {
   title: 'Cookies Page',
-  description: 'Cookies Page Description'
+  description: 'Cookies Page Description',
 }
 
-export default function CookiesPage () {
+export default function CookiesPage() {
   const cookieStore = cookies()
   const cookieTab = cookieStore.get('selectedTab')?.value ?? '1'
 

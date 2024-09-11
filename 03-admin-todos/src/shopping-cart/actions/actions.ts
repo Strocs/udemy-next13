@@ -1,15 +1,14 @@
 // 'use client'
 
-import { getCookie, hasCookie, setCookie } from "cookies-next"
-import { Cart } from "../types/cart"
-import { products } from "@/products/data"
+import { getCookie, hasCookie, setCookie } from 'cookies-next'
+import { Cart } from '../types/cart'
+import { products } from '@/products/data'
 
-const productsIdData = products.map(product => product.id)
+const productsIdData = products.map((product) => product.id)
 
 export const getCookieCart = (): Cart => {
-
   if (hasCookie('cart')) {
-    const cookieCart: Cart = JSON.parse(getCookie('cart') as string ?? '{}')
+    const cookieCart: Cart = JSON.parse((getCookie('cart') as string) ?? '{}')
     // Evaluation with Data
     for (const id of Object.keys(cookieCart)) {
       if (!productsIdData.includes(id)) {
@@ -57,3 +56,4 @@ export const removeSingleItemFromCart = (id: string) => {
 
   setCookie('cart', JSON.stringify(cookieCart))
 }
+

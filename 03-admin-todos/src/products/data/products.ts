@@ -1,4 +1,4 @@
-import { Product } from "../types/products";
+import { Product } from '../types/products'
 
 export const products: Product[] = [
   {
@@ -30,3 +30,4 @@ export const products: Product[] = [
     image: '/images/products/1742702-00-A_0_2000.jpg',
   },
 ]
+

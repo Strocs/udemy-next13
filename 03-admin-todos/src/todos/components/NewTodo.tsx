@@ -29,7 +29,7 @@ export const NewTodo = () => {
   return (
     <form onSubmit={onSubmit} className='flex w-full pb-6'>
       <input
-        onChange={e => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
         value={description}
         type='text'
         className='w-6/12 pl-3 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-sky-500 transition-all'

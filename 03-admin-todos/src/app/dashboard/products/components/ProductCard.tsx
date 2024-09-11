@@ -6,7 +6,7 @@ import { Star } from './Star'
 import {
   addProductToCart,
   getProductCount,
-  removeProductFromCart
+  removeProductFromCart,
 } from '@/shopping-cart'
 import { useRouter } from 'next/navigation'
 

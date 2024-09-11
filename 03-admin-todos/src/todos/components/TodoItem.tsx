@@ -14,7 +14,7 @@ export const TodoItem = ({ todo, toggleTodo }: Props) => {
     todo,
     (state, newCompletedValue: boolean) => ({
       ...state,
-      complete: newCompletedValue
+      complete: newCompletedValue,
     })
   )
 

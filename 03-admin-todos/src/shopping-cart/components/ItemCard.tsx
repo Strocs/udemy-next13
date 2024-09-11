@@ -17,12 +17,12 @@ interface Props {
 export const ItemCard = ({ product, quantity }: Props) => {
   const router = useRouter()
 
-  function onAddToCart () {
+  function onAddToCart() {
     addProductToCart(product.id)
     router.refresh()
   }
 
-  function onRemoveItem () {
+  function onRemoveItem() {
     removeSingleItemFromCart(product.id)
     router.refresh()
   }

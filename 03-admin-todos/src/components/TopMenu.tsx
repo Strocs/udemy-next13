@@ -9,7 +9,7 @@ type Cart = {
 
 const getTotalCount = (cart: Cart) => {
   let items = 0
-  Object.values(cart).forEach(item => {
+  Object.values(cart).forEach((item) => {
     items += item
   })
 
