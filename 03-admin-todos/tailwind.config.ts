@@ -19,10 +19,10 @@ const config: Config = {
       },
       keyframes: {
         bgGradient: {
-          "0%": { backgroundPosition: 'right' },
+          "0%": { backgroundPosition: "right" },
           "100%": { backgroundPosition: "left" },
-        }
-      }
+        },
+      },
     },
   },
   plugins: [],
