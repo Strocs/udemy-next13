@@ -3,10 +3,25 @@ import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import prisma from "./prisma";
+import Credentials from "next-auth/providers/credentials";
+import { signInCredentials } from "@/auth/actions/auth-actions";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  providers: [GitHub, Google],
+  providers: [
+    GitHub,
+    Google,
+    Credentials({
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "user@email.com" },
+        password: { label: "Password", type: "password" },
+      },
+
+      async authorize({ email, password }) {
+        return await signInCredentials(email as string, password as string);
+      },
+    }),
+  ],
   session: {
     strategy: "jwt",
   },
