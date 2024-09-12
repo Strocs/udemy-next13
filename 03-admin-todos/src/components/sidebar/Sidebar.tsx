@@ -92,7 +92,7 @@ export const Sidebar = async () => {
         </ul>
       </div>
 
-      {session ? <SignOutButton /> : <SignInButton />}
+      <SignOutButton />
     </aside>
   )
 }

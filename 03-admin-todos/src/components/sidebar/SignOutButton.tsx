@@ -1,14 +1,18 @@
 'use client'
-import { signOut as ClientSignOut } from 'next-auth/react'
-import { signOut as ServerSignOut } from './actions'
-
+import { signOut, signIn, useSession } from 'next-auth/react'
 import { CiLogout } from 'react-icons/ci'
 
 export const SignOutButton = () => {
-  // To show logout data on client components it must be used signOut from next-auth/react, this manage session status on server and client
+  const { status } = useSession()
+
   async function handleSignOut() {
-    await ServerSignOut()
-    await ClientSignOut()
+    if (status === 'authenticated') {
+      await signOut()
+    }
+
+    if (status === 'unauthenticated') {
+      await signIn()
+    }
   }
 
   return (
@@ -18,7 +22,13 @@ export const SignOutButton = () => {
         className='px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group'
       >
         <CiLogout />
-        <span className='group-hover:text-gray-700'>Logout</span>
+        <span className='group-hover:text-gray-700'>
+          {status === 'authenticated'
+            ? 'Sign out'
+            : status === 'unauthenticated'
+              ? 'Sign in'
+              : 'Wait'}
+        </span>
       </button>
     </div>
   )
