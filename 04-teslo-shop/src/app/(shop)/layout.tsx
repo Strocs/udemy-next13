@@ -10,7 +10,7 @@ export default function ShopLayout({
     <>
       <TopMenu />
       <Sidebar />
-      <main className='h-full min-h-dvh container mx-auto sm:px-5'>
+      <main className='h-full min-h-dvh container mx-auto md:px-5'>
         {children}
       </main>
     </>
