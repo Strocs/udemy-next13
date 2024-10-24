@@ -4,6 +4,9 @@
   border-radius: 100%;
   padding: 1.2rem;
   opacity: 0;
+  &.swiper-button-disabled {
+    display: none;
+  }
 }
 
 .group:hover .swiper-button-prev,
@@ -17,10 +20,6 @@
 
 .swiper-button-next::after {
   margin-right: -2px;
-}
-
-.swiper-button-disabled {
-  display: none;
 }
 
 .thumbs .swiper-slide {
@@ -42,7 +41,7 @@
 @media (max-width: 768px) {
   .swiper-button-prev,
   .swiper-button-next {
-    display: none;
+    display: none !important;
   }
   .swiper-pagination {
     opacity: 1;

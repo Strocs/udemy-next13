@@ -1,4 +1,4 @@
-import { TopMenu } from '@/components'
+import { Footer, TopMenu } from '@/components'
 import { Sidebar } from '@/components/ui/sidebar/Sidebar'
 
 export default function ShopLayout({
@@ -13,6 +13,7 @@ export default function ShopLayout({
       <main className='h-full min-h-dvh container mx-auto md:px-5'>
         {children}
       </main>
+      <Footer />
     </>
   )
 }
